@@ -23,11 +23,15 @@
   function App(){
     // useState는 array를 제공. 그 첫번째 element가 현재의 값이 된다.
     const [minutes, setMinutes] = React.useState()
+    const [flipped, setFlipped] = React.useState(false)
     const onChange = (event) => {
       setMinutes(event.target.value)
     }
     const reset = () => {
       setMinutes(0)
+    }
+    const onFlip = () => {
+      setFlipped((current) => !current);
     }
     return (
       <div>
@@ -40,6 +44,7 @@
             placeholder="Minutes" 
             type="number" 
             onChange={onChange}
+            disabled = {flipped === true}
           />
         </div>
 
@@ -50,9 +55,11 @@
             id="Hours"
             placeholder="Hours" 
             type="number" 
+            disabled = {flipped === false}
           />
         </div>
         <button onClick={reset}>Reset</button>
+        <button onClick={onFlip}>Flip</button>
       </div>
     )
   }
