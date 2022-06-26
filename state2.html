@@ -21,27 +21,27 @@
   // 비어있는 root라는 div에 넣을거니까 일단 가져옴
   const root=document.getElementById("root");
   function App(){
-    const data = React.useState(0);
     // console.log(data)
-    const [counter, modifier] = data;
+    // data의 첫번째 요소 : 우리가 담으려는 data의 값
+    // data의 두번째 요소 : data값을 바꿀 때 사용할 modifier
+    const [counter, setCounter] = React.useState(0);
+    const onClick = () => { 
+      setCounter(counter + 1)
+    }
     return (
       <div>
         <h3>
           Total clicks : {counter}
         </h3>
 
-        <button onClick={countUp}>
+        <button onClick={onClick}>
           Click me
         </button>
       </div>
     )
   }
-  
-  function render() {
-    ReactDOM.render(<App/>, root); 
-  }
+  ReactDOM.render(<App/>, root)
 
-  render()
 </script>
 
 </html>
