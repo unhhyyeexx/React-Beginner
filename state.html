@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 비어있는 div ; reactDom이 React element를 가져다 놓을 곳 -->
+  <div id="root"></div>
+</body>
+
+<!-- react.js : element를 생성하고 event listner를 더하는 것을 도와줌 -->
+<script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<!-- reactdom : reate element들을 html로 바꿔줌 -->
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<!-- jsx를 쓰는 babel설치, 아래 script에 type까지 명시해야 브라우저 적용 -->
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="text/babel">
+  // 비어있는 root라는 div에 넣을거니까 일단 가져옴
+  const root=document.getElementById("root");
+  let counter = 0;
+
+  function countUp() {
+    counter = counter + 1;
+    render()
+  }
+  
+  function render() {
+    ReactDOM.render(<App/>, root); 
+  }
+
+  const App = ()=>(
+    <div>
+      <h3>
+        Total clicks : {counter}
+      </h3>
+
+      <button onClick={countUp}>
+        Click me
+      </button>
+    </div>)
+
+  render()
+</script>
+
+</html>
+
+
