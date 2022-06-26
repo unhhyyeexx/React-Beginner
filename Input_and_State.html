@@ -21,25 +21,26 @@
   // 비어있는 root라는 div에 넣을거니까 일단 가져옴
   const root=document.getElementById("root");
   function App(){
-    // console.log(data)
-    // data의 첫번째 요소 : 우리가 담으려는 data의 값
-    // data의 두번째 요소 : data값을 바꿀 때 사용할 modifier
-    const [counter, setCounter] = React.useState(0);
-    const onClick = () => { 
-      // setCounter(counter + 1)
-      setCounter((current) => current + 1)
-      // 첫번째 argument : 현재 값, return 값: 새로운 state
-      // 위랑 아래랑 같은 값을 계산하지만 아래처럼 함수를 쓰는게 더 안전. 
+    // useState는 array를 제공. 그 첫번째 element가 현재의 값이 된다.
+    const [minutes, setMinutes] = React.useState()
+    const onChange = (event) => {
+      console.log(event.target.value)
+      setMinutes(event.target.value)
     }
     return (
       <div>
-        <h3>
-          Total clicks : {counter}
-        </h3>
-
-        <button onClick={onClick}>
-          Click me
-        </button>
+        <h1 className="hi">Super Converter</h1>
+        <label htmlFor="Minutes">Minutes</label>
+        <input 
+          value={minutes}
+          id="Minutes" 
+          placeholder="Minutes" 
+          type="number" 
+          onChange={onChange}
+        />
+        <h4>You want to convert {minutes}</h4>
+        <label htmlFor="Hours">Hours</label>
+        <input id="Hours" placeholder="Hours" type="number" />
       </div>
     )
   }
