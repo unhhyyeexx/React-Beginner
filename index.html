@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 비어있는 div ; reactDom이 React element를 가져다 놓을 곳 -->
+  <div id="root"></div>
+</body>
+
+<!-- react.js : element를 생성하고 event listner를 더하는 것을 도와줌 -->
+<script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<!-- reactdom : reate element들을 html로 바꿔줌 -->
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<!-- jsx를 쓰는 babel설치, 아래 script에 type까지 명시해야 브라우저 적용 -->
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="text/babel">
+  // 비어있는 root라는 div에 넣을거니까 일단 가져옴
+  const root=document.getElementById("root");
+  // argument
+  // 1. root에 들어갈 html태그
+  // 2. props가 포함된 object
+  // 3. content
+
+  // 기본코드
+    // const h3 = React.createElement(
+    //   "h3",
+    //   // props ; { id: "cute-span", style: {color: "red"}},
+    //   {
+    //     onMouseEnter:()=> console.log("mouse enter")
+    //   },
+    //   "Hello I'm a span"
+    //   );
+    // type, property, content
+  // 위 기본코드를 아래서 jsx를 써서 바꿔보자
+
+  const Title = ()=> (
+    <h3 id="title" onMouseEnter={()=> console.log("mouse enter")}>
+      Hello I'm a span
+    </h3>)
+
+  // 위에 Title이랑 같은건데 arrow를 일반 function으로 고치면
+  // function Title(){
+  //   return (
+  //     <h3 id="title" onMouseEnter={()=> console.log("mouse enter")}>
+  //       Hello I'm a span
+  //     </h3>
+  //   )
+  // }
+
+
+  // const btn = React.createElement("button",
+  //   {
+  //     onClick: () => console.log('im clikcked'),
+  //     style:{
+  //       backgroundColor:"tomato"
+  //     }
+  //   }, 
+  //   "Click me")
+
+  const Button = ()=>(
+    <button 
+      style={{backgroundColor: "tomato",}} 
+      onClick={()=> console.log('im clikcked')}>
+      Click me
+    </button>)
+
+
+
+  // 아래 container는 div이고, property는 null(없음, 속성은 id, class, event listener등이 될 수 있음), content는 h3와 btn
+  // const container = React.createElement("div", null, [h3, btn])
+
+  // const container = React.createElement("div", null, [Title, Button])
+
+  // Container에 Title, Button을 포함시키려면
+  // 먼저, Title과 Button을 함수로 만들어준다!
+  const Container = 
+    <div>
+      // 컴포넌트의 첫 글자는 반드시 대문자 !!
+      // 소문자라면 React와 JSX는 이게 html 태그러 인식
+      <Title></Title>
+      <Button/>
+    </div>
+
+
+
+  // reactDom을 render ; react element들을 root라는 div안에서 보여줘라
+  // reactdom은 container element를 root div안에 render할거임
+  ReactDOM.render(Container, root); 
+</script>
+
+</html>
