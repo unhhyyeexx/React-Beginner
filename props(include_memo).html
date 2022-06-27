@@ -30,7 +30,8 @@
       {text}
     </button>)
   }
-
+  
+  // memo ; 부모 컴포넌트에서 변화가 있는 state만 re-render
   const MemorizedBtn = React.memo(Btn)
 
   function App(){

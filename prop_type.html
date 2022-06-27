@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="root"></div>
+</body>
+
+<script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/prop-types@15.6/prop-types.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="text/babel">
+  
+  // 아래 fontSize처럼 default값 설정 가능(javascript문법)
+  function Btn({text, fontSize=14}){
+    return (
+      <button 
+        style={{  
+          backgroundColor: "tomato",
+          color:"white",
+          padding: "10px 20px",
+          border: 0,
+          borderRadius: 10,
+          fontSize,
+      }}>
+      {text}
+    </button>)
+  }
+  
+  // prop들의 type을 설명
+  Btn.propTypes = {
+    text : PropTypes.isRequired,
+    fontSize : PropTypes.number,
+  }
+
+  function App(){
+    const [value, setValue] = React.useState("Save Change")
+    const changeValue = () => setValue("Revert Changes")
+    return (
+      <div>
+        <Btn text="SaveChanges" fontSize={18} />
+      </div>
+    )
+  }
+  
+  const root=document.getElementById("root");
+  ReactDOM.render(<App/>, root)
+
+</script>
+
+</html>
