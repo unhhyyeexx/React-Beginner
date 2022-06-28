@@ -21,6 +21,12 @@ function App() {
   useEffect(()=> {
       console.log("I run when 'keyword' changes." )
     }, [keyword])
+  // keyword가 변화할 때 브라우저에 console.log를 찍어줌
+  // keyword는 state에 있고, 
+  // 이 keyword는 setKeyword 라는 function으로 인해 변화
+  // setKeyword는 onChange라는 funtion에 의해 호출
+  // onChange는 사용자 input이 변화할 때 호출
+
   useEffect(()=> {
     if (keyword !== "" & keyword.length > 5){
       console.log("SEARCH FOR", keyword)
